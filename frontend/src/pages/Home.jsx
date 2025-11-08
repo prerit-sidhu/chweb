@@ -1,21 +1,44 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpen, Award, Users, TrendingUp, Bell, Calendar } from 'lucide-react';
-import { mockNotices, mockCourses, mockAchievements, mockTestimonials } from '../mock';
+import { mockTestimonials } from '../mock';
+import { noticesAPI, coursesAPI, statisticsAPI } from '../services/api';
 
 const Home = () => {
   const [notices, setNotices] = useState([]);
   const [courses, setCourses] = useState([]);
   const [achievements, setAchievements] = useState([]);
   const [testimonials, setTestimonials] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate API calls with mock data
-    setNotices(mockNotices);
-    setCourses(mockCourses);
-    setAchievements(mockAchievements);
-    setTestimonials(mockTestimonials);
+    fetchData();
   }, []);
+
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      const [noticesRes, coursesRes, statsRes] = await Promise.all([
+        noticesAPI.getAll(),
+        coursesAPI.getAll(),
+        statisticsAPI.get(),
+      ]);
+      
+      setNotices(noticesRes.data);
+      setCourses(coursesRes.data);
+      setAchievements([
+        { id: 1, value: statsRes.data.studentsTrained, label: 'Students Trained' },
+        { id: 2, value: statsRes.data.successRate, label: 'Success Rate' },
+        { id: 3, value: statsRes.data.neetSelections, label: 'NEET Selections' },
+        { id: 4, value: statsRes.data.jeeQualifiers, label: 'JEE Qualifiers' },
+      ]);
+      setTestimonials(mockTestimonials);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const getCourseIcon = (iconName) => {
     const icons = {
