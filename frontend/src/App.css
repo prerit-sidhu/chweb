@@ -1,34 +1,225 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+.App {
+  min-height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+/* Hero Section Styles */
+.hero-gradient {
+  background: linear-gradient(135deg, #DDF4E7 0%, #67C090 100%);
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+/* Button Styles - Pill Shaped */
+.btn-primary {
+  background: #124170;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 14px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  min-height: 48px;
+  line-height: 1.2;
 }
 
-.App-link {
-    color: #61dafb;
+.btn-primary:hover {
+  background: #26667F;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(18, 65, 112, 0.3);
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.btn-primary:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #124170;
+  border: 2px solid #124170;
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  min-height: 48px;
+}
+
+.btn-secondary:hover {
+  background: #124170;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Card Styles */
+.course-card {
+  background: white;
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(18, 65, 112, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  border: 1px solid #DDF4E7;
+}
+
+.course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(18, 65, 112, 0.15);
+}
+
+/* Notice Board */
+.notice-item {
+  background: white;
+  border-left: 4px solid #67C090;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.notice-item:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(103, 192, 144, 0.2);
+}
+
+.notice-item.priority-high {
+  border-left-color: #26667F;
+  background: #F0F9FF;
+}
+
+/* Faculty Card */
+.faculty-card {
+  background: white;
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(18, 65, 112, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faculty-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(18, 65, 112, 0.15);
+}
+
+.faculty-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #DDF4E7;
+  margin-bottom: 1rem;
+}
+
+/* Gallery Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery-item {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(18, 65, 112, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(18, 65, 112, 0.2);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+/* Stats Counter */
+.stat-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(18, 65, 112, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: scale(1.05);
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #124170;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: #26667F;
+  font-weight: 500;
+}
+
+/* Testimonial Card */
+.testimonial-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(18, 65, 112, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(18, 65, 112, 0.15);
+}
+
+/* Input Styles */
+.form-input {
+  border: 2px solid #DDF4E7;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #67C090;
+  box-shadow: 0 0 0 3px rgba(103, 192, 144, 0.1);
+}
+
+/* Section Spacing */
+.section-padding {
+  padding: 4rem 1rem;
+}
+
+/* Responsive Container */
+.container-custom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 2rem 1rem;
+  }
+  
+  .btn-primary, .btn-secondary {
+    padding: 12px 24px;
+    font-size: 0.875rem;
+  }
+  
+  .stat-value {
+    font-size: 2rem;
+  }
 }
